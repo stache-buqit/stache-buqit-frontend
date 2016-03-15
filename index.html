@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>File upload to express</title>
+  </head>
+  <body>
+    <form action="http://httpbin.org/post" method="post">
+      <fieldset>
+        <legend>enctype unset</legend>
+        <label>Comment
+          <input type="text" name="image[comment]">
+        </label>
+          <label>Image
+            <input type="file" name="image[file]">
+          </label>
+          <input type="submit" name="submit" value="Upload">
+      </fieldset>
+    </form>
+    <form action="http://httpbin.org/post" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <legend>enctype="multipart/form-data"</legend>
+        <label>Comment
+          <input type="text" name="image[comment]">
+        </label>
+          <label>Image
+            <input type="file" name="image[file]">
+          </label>
+          <input type="submit" name="submit" value="Upload">
+      </fieldset>
+    </form>
+  </body>
+</html>
