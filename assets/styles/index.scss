@@ -10,7 +10,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   background-repeat: no-repeat;
 
   canvas {
-    // height: 200px;
-    // width: 200px;
+    border: 1px solid red;
+    height: 500px;
+    width: 500px;
   }
 }
