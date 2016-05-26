@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "fabric": "^1.6.2",
     "jquery": "^2.2.2"
   },
   "devDependencies": {
