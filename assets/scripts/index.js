@@ -4,4 +4,19 @@
 // var example = require('./example');
 
 // use require without a reference to ensure a file is bundled
-require('./example');
+
+$(() => {
+  $('#application-x-www-form-encoded').on('submit', function(e) {
+    e.preventDefault(); // default is to rerender whatever comes back
+    console.log(this);
+    let formData = new FormData(this);
+    $.ajax({
+      method: 'POST',
+      url: 'http://localhost:3000/uploads',
+      processData: false, // so that jQuery doesn't transform the object into an encoded string
+      contentType: false, // tells jQuery not to set a content type header
+      data: formData
+    }).done((data) => console.log(data))
+    .fail((error) => console.error(error));
+  });
+});
