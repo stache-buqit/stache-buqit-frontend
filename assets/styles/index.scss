@@ -1,2 +1,16 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+.test-canvas-background {
+  border: 2px solid gray;
+  height: 500px;
+  width: 500px;
+  background-image: url('https://qzprod.files.wordpress.com/2015/09/rtx413d.jpg?quality=80&strip=all&w=1600');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  canvas {
+    // height: 200px;
+    // width: 200px;
+  }
+}
