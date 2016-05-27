@@ -70,7 +70,7 @@ const drawMustache = function(canvas, params) {
 };
 
 // Canvas Fabric.js Test
-const drawCanvas = function() {
+const drawCanvas = function(faceJSON) {
   let canvas = prepareCanvas(600, 600);
 
   // Draw some face points
@@ -91,6 +91,7 @@ const drawCanvas = function() {
     mouthRight: { x: 477, y: 240 }
   };
   drawMustache(canvas, paramsFromFacePoints(facePoints));
+  // drawMustache(canvas, faceJSON[0].faceLandmarks);
 };
 
 module.exports = drawCanvas;
