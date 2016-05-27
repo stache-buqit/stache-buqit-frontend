@@ -18,7 +18,7 @@ $(() => {
     console.log(formData);
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:3000/uploads',
+      url: 'http://stache-proj.herokuapp.com',
       processData: false, // so that jQuery doesn't transform the object into an encoded string
       contentType: false, // tells jQuery not to set a content type header
       data: formData
