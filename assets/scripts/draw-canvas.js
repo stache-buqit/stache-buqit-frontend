@@ -7,19 +7,30 @@ const prepareCanvas = function(height, width) {
   return canvas;
 };
 
+// Returns the distance between two points
 const distanceBtwPoints = function(pointA, pointB) {
-  return
+  return Math.sqrt(Math.pow((pointA.x - pointB.x),2) + Math.pow((pointA.y - pointB.y),2));
+};
+
+// Returns the center of a quadrilateral
+const centroid = function(pointA, pointB, pointC, pointD) {
+  return {
+    x: (pointA.x + pointB.x + pointC.x + pointD.x) / 4,
+    y: (pointA.y + pointB.y + pointC.y + pointD.y) / 4
+  };
 };
 
 // Converts facial detection data into parameters for placing mustache
 const paramsFromFacePoints = function(facePoints) {
   console.log(facePoints);
-  let width = Math.sqrt(facePoints.)
+  let width = distanceBtwPoints(facePoints.mouthLeft, facePoints.mouthRight) * 1.5;
+  console.log(width);
+  let center = centroid(facePoints.mouthLeft, facePoints.mouthRight, facePoints.noseLeftAlarOutTip, facePoints.noseRightAlarOutTip);
 
   let params = {
-    // width: 120,
-    // xPos: 445,
-    // yPos: 230,
+    width,
+    xPos: center.x,
+    yPos: center.y,
     // angle: 20,
   };
   return params;
