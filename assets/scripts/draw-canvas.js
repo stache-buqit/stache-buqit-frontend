@@ -7,20 +7,13 @@ const prepareCanvas = function(height, width) {
   return canvas;
 };
 
-// Canvas Fabric.js Test
-const drawCanvas = function() {
-  let canvas = prepareCanvas(600, 600);
-
+// Draws a mustache on a canvas based on input parameters
+const drawMustache = function(canvas, width) {
   fabric.loadSVGFromURL("assets/images/mustache1.svg", function(objects, options) {
     let obj = fabric.util.groupSVGElements(objects, options);
 
-    obj.scaleToWidth(100).set({
-        // height: 200,
-        // width: 200,
-        // angle: 90,
-        // left: canvas.width / 3,
-        // top: canvas.height / 3,
-    })
+    obj
+    .scaleToWidth(width)
     .setCoords();
 
     console.log(obj.height, obj.width);
@@ -28,7 +21,12 @@ const drawCanvas = function() {
     canvas.add(obj);
 
   });
+};
 
+// Canvas Fabric.js Test
+const drawCanvas = function() {
+  let canvas = prepareCanvas(600, 600);
+  drawMustache(canvas, 200);
 };
 
 module.exports = drawCanvas;
