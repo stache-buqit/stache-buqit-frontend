@@ -2,16 +2,18 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 .test-canvas-background {
-  border: 2px solid gray;
-  height: 500px;
-  width: 500px;
-  background-image: url('https://qzprod.files.wordpress.com/2015/09/rtx413d.jpg?quality=80&strip=all&w=1600');
+  // border: 2px solid gray;
+  height: auto;
+  width: auto;
+  max-height: 600px;
+  max-width: 600px;
+  background-image: url('http://www.paulcbrunson.com/wp-content/uploads/2014/01/SmilingSelfie.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 
   canvas {
     border: 1px solid red;
-    height: 500px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
   }
 }
