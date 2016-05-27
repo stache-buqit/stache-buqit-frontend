@@ -6,6 +6,7 @@
 // use require without a reference to ensure a file is bundled
 const appData = require('./app-data.js');
 const faceApiCall = require('../../lib/ajax-api-call.js');
+const drawCanvas = require('./draw-canvas');
 
 $(() => {
 
@@ -28,5 +29,6 @@ $(() => {
     })
     .fail((error) => console.error(error));
   });
-
+  
+drawCanvas();
 });
