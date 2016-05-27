@@ -14,6 +14,7 @@ $(() => {
     e.preventDefault(); // default is to rerender whatever comes back
     // console.log(this);
     let formData = new FormData(this);
+    console.log(formData);
     $.ajax({
       method: 'POST',
       url: 'http://localhost:3000/uploads',
