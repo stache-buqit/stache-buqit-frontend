@@ -24,11 +24,11 @@ $(() => {
       data: formData
     }).done((data) => {
       faceApiCall(data.upload.location);
+      $('.test-canvas-background').css('background-image', `url(${data.upload.location})`);
       // console.log(appData.uploadResponse.upload.location);
-      console.log(data);
     })
     .fail((error) => console.error(error));
   });
-  
-drawCanvas();
+
+// drawCanvas();
 });

@@ -50,9 +50,8 @@ const paramsFromFacePoints = function(facePoints) {
 const drawMustache = function(canvas, params) {
   fabric.loadSVGFromURL("assets/images/mustache1.svg", function(objects, options) {
     let obj = fabric.util.groupSVGElements(objects, options);
-
     console.log(params);
-
+    params = paramsFromFacePoints(params);
     obj
     .scaleToWidth(params.width)
     .set({
@@ -72,26 +71,26 @@ const drawMustache = function(canvas, params) {
 // Canvas Fabric.js Test
 const drawCanvas = function(faceJSON) {
   let canvas = prepareCanvas(600, 600);
-
-  // Draw some face points
-  let noseLeftAlarOutTip = new fabric.Circle({ originX: 'center', originY: 'center', left: 439, top: 205,  radius: 3, fill: 'cyan', x: 439, y: 205});
-  let noseRightAlarOutTip = new fabric.Circle({ originX: 'center', originY: 'center', left: 467, top: 217,  radius: 3, fill: 'cyan', x: 467, y: 217 });
-  let mouthLeft = new fabric.Circle({ originX: 'center', originY: 'center', left: 422, top: 218,  radius: 3, fill: 'cyan', x: 422, y: 218 });
-  let mouthRight = new fabric.Circle({ originX: 'center', originY: 'center', left: 477, top: 240,  radius: 3, fill: 'cyan', x: 477, y: 240 });
-
-  canvas.add(noseLeftAlarOutTip);
-  canvas.add(noseRightAlarOutTip);
-  canvas.add(mouthLeft);
-  canvas.add(mouthRight);
-
-  let facePoints = {
-    noseLeftAlarOutTip: { x: 439, y: 205 },
-    noseRightAlarOutTip: { x: 467, y: 217 },
-    mouthLeft: { x: 422, y: 218 },
-    mouthRight: { x: 477, y: 240 }
-  };
-  drawMustache(canvas, paramsFromFacePoints(facePoints));
-  // drawMustache(canvas, faceJSON[0].faceLandmarks);
+  //
+  // // Draw some face points
+  // let noseLeftAlarOutTip = new fabric.Circle({ originX: 'center', originY: 'center', left: 439, top: 205,  radius: 3, fill: 'cyan', x: 439, y: 205});
+  // let noseRightAlarOutTip = new fabric.Circle({ originX: 'center', originY: 'center', left: 467, top: 217,  radius: 3, fill: 'cyan', x: 467, y: 217 });
+  // let mouthLeft = new fabric.Circle({ originX: 'center', originY: 'center', left: 422, top: 218,  radius: 3, fill: 'cyan', x: 422, y: 218 });
+  // let mouthRight = new fabric.Circle({ originX: 'center', originY: 'center', left: 477, top: 240,  radius: 3, fill: 'cyan', x: 477, y: 240 });
+  //
+  // canvas.add(noseLeftAlarOutTip);
+  // canvas.add(noseRightAlarOutTip);
+  // canvas.add(mouthLeft);
+  // canvas.add(mouthRight);
+  //
+  // let facePoints = {
+  //   noseLeftAlarOutTip: { x: 439, y: 205 },
+  //   noseRightAlarOutTip: { x: 467, y: 217 },
+  //   mouthLeft: { x: 422, y: 218 },
+  //   mouthRight: { x: 477, y: 240 }
+  // };
+  // drawMustache(canvas, paramsFromFacePoints(facePoints));
+  drawMustache(canvas, faceJSON[0].faceLandmarks);
 };
 
 module.exports = drawCanvas;
