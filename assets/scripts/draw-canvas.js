@@ -13,11 +13,20 @@ const distanceBtwPoints = function(pointA, pointB) {
 };
 
 // Returns the center of a quadrilateral
-const centroid = function(pointA, pointB, pointC, pointD) {
+const centroid = function(points) {
   return {
-    x: (pointA.x + pointB.x + pointC.x + pointD.x) / 4,
-    y: (pointA.y + pointB.y + pointC.y + pointD.y) / 4
+    x: points.reduce( (prev, curr) => prev + curr.x, 0 ) / points.length,
+    y: points.reduce( (prev, curr) => prev + curr.y, 0 ) / points.length
   };
+};
+
+// Returns the angle of the line between two points
+const getAngle = function(pointA, pointB) {
+  let slope = (pointA.y - pointB.y)/(pointA.x - pointB.x);
+  console.log(slope);
+  let degrees = Math.atan(slope) * (180 / Math.PI);
+  console.log(degrees);
+  return degrees;
 };
 
 // Converts facial detection data into parameters for placing mustache
@@ -25,13 +34,14 @@ const paramsFromFacePoints = function(facePoints) {
   console.log(facePoints);
   let width = distanceBtwPoints(facePoints.mouthLeft, facePoints.mouthRight) * 1.5;
   console.log(width);
-  let center = centroid(facePoints.mouthLeft, facePoints.mouthRight, facePoints.noseLeftAlarOutTip, facePoints.noseRightAlarOutTip);
+  let center = centroid([facePoints.mouthLeft, facePoints.mouthRight, facePoints.noseLeftAlarOutTip, facePoints.noseRightAlarOutTip]);
+  let angle = getAngle(facePoints.mouthLeft, facePoints.mouthRight);
 
   let params = {
     width,
     xPos: center.x,
     yPos: center.y,
-    // angle: 20,
+    angle,
   };
   return params;
 };
