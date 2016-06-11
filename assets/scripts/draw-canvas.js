@@ -1,4 +1,5 @@
 'use strict';
+const appData = require('./app-data');
 
 // Prepares canvas based on size and dimension of image
 const prepareCanvas = function(height, width) {
@@ -70,7 +71,7 @@ const drawMustache = function(canvas, params) {
 
 // Canvas Fabric.js Test
 const drawCanvas = function(faceJSON) {
-  let canvas = prepareCanvas(600, 600);
+  let canvas = prepareCanvas(appData.image.height, appData.image.width);
   for (let i = 0; i < faceJSON.length; i++) {
     drawMustache(canvas, faceJSON[i].faceLandmarks);
   }
