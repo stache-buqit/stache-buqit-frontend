@@ -24,7 +24,6 @@ $(() => {
       data: formData
     }).done((data) => {
       faceApiCall(data.upload.location);
-      $('.test-canvas-background').css('background-image', `url(${data.upload.location})`);
       // console.log(appData.uploadResponse.upload.location);
     })
     .fail((error) => console.error(error));
