@@ -4,15 +4,15 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .test-canvas-background {
   // border: 2px solid gray;
   height: auto;
-  width: auto;
-  max-height: 600px;
-  max-width: 600px;
+  width: 600px;
+  // max-height: 5000px;
+  // max-width: 5000px;
   // background-image: url('http://www.paulcbrunson.com/wp-content/uploads/2014/01/SmilingSelfie.jpg');
-  // background-size: contain;
+  background-size: contain;
   background-repeat: no-repeat;
 
   canvas {
-    border: 1px solid red;
+    // border: 1px solid red;
     height: 100%;
     width: 100%;
   }

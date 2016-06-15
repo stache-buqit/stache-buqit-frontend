@@ -5,12 +5,12 @@
 
 // use require without a reference to ensure a file is bundled
 const appData = require('./app-data.js');
-const faceApiCall = require('../../lib/ajax-api-call.js');
+const faceApiCall = require('./face-api-call.js');
 const drawCanvas = require('./draw-canvas');
 
 $(() => {
 
-
+  // Upload Image
   $('#application-x-www-form-encoded').on('submit', function(e) {
     e.preventDefault(); // default is to rerender whatever comes back
     // console.log(this);
@@ -24,11 +24,19 @@ $(() => {
       data: formData
     }).done((data) => {
       faceApiCall(data.upload.location);
-      $('.test-canvas-background').css('background-image', `url(${data.upload.location})`);
       // console.log(appData.uploadResponse.upload.location);
     })
     .fail((error) => console.error(error));
   });
 
-// drawCanvas();
+
+  // Direct URL Entry
+  $('#direct-url-entry').on('submit', function(e) {
+    e.preventDefault();
+    let url = $('#url-input').val();
+    console.log(url);
+    faceApiCall(url);
+    $('.test-canvas-background').css('background-image', `url(${url})`);
+  });
+
 });

@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Image Upload</title>
+    <title>Mustachify</title>
 
     <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
     <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.2/fabric.min.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body class="container-fluid">
-    <form id="application-x-www-form-encoded" action="http://localhost:3000/uploads" method="post" enctype="application/x-www-form-encoded">
+    <h1>Mustachify!</h1>
+    <form id="direct-url-entry">
       <fieldset>
-        <legend>enctype="application/x-www-form-encoded"</legend>
-        <label>Title
-          <input type="text" name="upload[title]">
+        <legend>Enter a URL Here</legend>
+        <label>URL
+          <input id="url-input" type="text" name="url">
         </label>
-          <label>Upload
-            <input type="file" name="upload[file]">
-          </label>
-          <input type="submit" name="submit" value="Upload">
+        <input type="submit" name="submit" value="'Stache It!">
       </fieldset>
     </form>
-    <form id="multipart-form-data" action="http://localhost:3000/uploads" method="post" enctype="multipart/form-data">
-      <fieldset>
-        <legend>enctype="multipart/form-data"</legend>
-        <label>Title
-          <input type="text" name="upload[title]">
-        </label>
-          <label>Upload
-            <input type="file" name="upload[file]">
-          </label>
-          <input type="submit" name="submit" value="Upload">
-      </fieldset>
-    </form>
-    <h1>LOOK A CANVAS</h1>
+    <h2>Behold:</h2>
     <div class="test-canvas-background">
       <canvas id="test-canvas" class="test-canvas">
       </canvas>

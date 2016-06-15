@@ -1,4 +1,5 @@
 'use strict';
+const appData = require('./app-data');
 
 // Prepares canvas based on size and dimension of image
 const prepareCanvas = function(height, width) {
@@ -47,18 +48,18 @@ const paramsFromFacePoints = function(facePoints) {
 };
 
 // Draws a mustache on a canvas based on input parameters
-const drawMustache = function(canvas, params) {
+const drawMustache = function(canvas, params, scaleFactor) {
   fabric.loadSVGFromURL("assets/images/mustache1.svg", function(objects, options) {
     let obj = fabric.util.groupSVGElements(objects, options);
     console.log(params);
     params = paramsFromFacePoints(params);
     obj
-    .scaleToWidth(params.width)
+    .scaleToWidth(params.width * scaleFactor)
     .set({
       originX: 'center',
       originY: 'center',
-      left: params.xPos,
-      top: params.yPos,
+      left: params.xPos * scaleFactor,
+      top: params.yPos * scaleFactor,
       angle: params.angle
     })
     .setCoords();
@@ -70,9 +71,15 @@ const drawMustache = function(canvas, params) {
 
 // Canvas Fabric.js Test
 const drawCanvas = function(faceJSON) {
-  let canvas = prepareCanvas(600, 600);
+  let photoHeight = appData.image.height;
+  let photoWidth = appData.image.width;
+  let canvasWidth = appData.canvasWidth;
+  let canvasHeight = photoHeight * canvasWidth / photoWidth;
+  let scaleFactor = canvasWidth / photoWidth;
+  console.log("PHOTO: ", photoHeight, photoWidth, "CANVAS: ", canvasHeight, canvasWidth, "SCALE: ", scaleFactor);
+  let canvas = prepareCanvas(canvasHeight, canvasWidth);
   for (let i = 0; i < faceJSON.length; i++) {
-    drawMustache(canvas, faceJSON[i].faceLandmarks);
+    drawMustache(canvas, faceJSON[i].faceLandmarks, scaleFactor);
   }
 };
 
